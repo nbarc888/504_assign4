@@ -19,6 +19,13 @@ Machine Type: E2 Series
 Size : e2-Small shared Core - 2 GB memory
 Operating System: Ubuntu - Version: 25.10 minimal  10 GB size
 For networking : Allow all HTTP and HTTPS
+##### Firewall additional add-on
+name : mysql
+targets: specified 
+target tag: all instances
+source: 0.0.0.0./0
+enable tcp 3306
+
 
 ###  Database Specs: 
 
@@ -67,6 +74,20 @@ note: u stands for user, h stands for host
 sudo mysql
 ```
 then it works 
+
+Commands for Query: 
+```bash
+
+```
+```bash
+
+```
+```bash
+SHOW DATABASES;
+```
+
+
+
 
 
 

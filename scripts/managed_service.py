@@ -1,3 +1,6 @@
+# in terminal run: pip install pandas sqlalchemy pymysql python-dotenv
+# Run this file top-to-bottom OR run it cell-by-cell in VS Code.
+
 import os, time
 from datetime import datetime
 import pandas as pd
@@ -37,11 +40,11 @@ engine = create_engine(db_url, pool_pre_ping=True)
 table_name = "visits"
 df = pd.DataFrame(
     [
-        {"patient_id": 10, "visit_date": "2025-10-01", "bp_sys": 117, "bp_dia": 75},
-        {"patient_id": 11, "visit_date": "2025-10-02", "bp_sys": 131, "bp_dia": 86},
-        {"patient_id": 12, "visit_date": "2025-10-03", "bp_sys": 122, "bp_dia": 80},
-        {"patient_id": 13, "visit_date": "2025-10-04", "bp_sys": 111, "bp_dia": 71},
-        {"patient_id": 14, "visit_date": "2025-10-05", "bp_sys": 126, "bp_dia": 83},
+        {"patient_id": 1, "visit_date": "2025-09-01", "bp_sys": 118, "bp_dia": 76, "HR": 72, "RR": 16, "Temp_C": 36.6},
+        {"patient_id": 2, "visit_date": "2025-09-02", "bp_sys": 78, "bp_dia": 35, "HR": 88, "RR": 20, "Temp_C": 37.0},
+        {"patient_id": 3, "visit_date": "2025-09-03", "bp_sys": 121, "bp_dia": 79, "HR": 95, "RR": 18, "Temp_C": 38.2},
+        {"patient_id": 4, "visit_date": "2025-09-04", "bp_sys": 210, "bp_dia": 105, "HR": 110, "RR": 22, "Temp_C": 39.0},
+        {"patient_id": 5, "visit_date": "2025-09-05", "bp_sys": 125, "bp_dia": 82, "HR": 76, "RR": 17, "Temp_C": 36.8},
     ]
 )
 print("[STEP 3] Writing DataFrame to table:", table_name)
