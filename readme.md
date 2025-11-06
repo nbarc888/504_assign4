@@ -13,7 +13,12 @@ VM services by cloud
 
 
 ## Cloud selected: GCP
-#### Region:
+#### Region: US-East1 (SC) 
+##### VM specs: 
+Machine Type: E2 Series
+Size : e2-Small shared Core - 2 GB memory
+Operating System: Ubuntu - Version: 25.10 minimal  10 GB size
+For networking : Allow all HTTP and HTTPS
 
 ###  Database Specs: 
 
@@ -36,7 +41,32 @@ scripts/managed_demo.py
 
 ### Steps to reproduce 
 
-
+Update ubuntu
+```bash
+sudo apt-get update
+```
+```Bash 
+sudo apt install nano
+```
+To install mysql
+```bash
+sudo apt install mysql-server mysql-client #-y 
+# (if you add this arguement it autosays yes which is optional)
+```
+To log in - this 
+```bash
+sudo mysql
+```
+To connect to another database
+```bash
+mysql -u hants -h 34.23.52.32 -p
+```
+note: u stands for user, h stands for host
+##### Exit out of SHH then back in SHH
+```bash
+sudo mysql
+```
+then it works 
 
 
 
