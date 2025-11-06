@@ -1,26 +1,58 @@
-ignore sql scripts until further notice for now 11/3
 
-goal is to use one cloud source. Goal: use google cloud if possible 
+goal is to use one cloud source. Goal: use google cloud
 
 Assignment link: https://github.com/hantswilliams/HHA-504-2025/blob/main/assignment_4/database_deployment.md
 
 You will provision two MySQL databases on the same cloud: (A) a VM you harden and configure yourself, and (B) the cloud’s managed MySQL offering. You will then connect to both using SQLAlchemy in Python, create a new database and table with pandas, insert data, and read it back. You will document steps, timing, and the differences in setup effort and operational friction.
 
 Managed service names by cloud
-
-Azure: Azure Database for MySQL – Flexible Server
-GCP: Cloud SQL for MySQL
-OCI: MySQL Database Service (MDS)
+- GCP: Cloud SQL for MySQL
 
 VM services by cloud
+- GCP: Compute Engine
 
-Azure: Azure Virtual Machines
-GCP: Compute Engine
-OCI: Compute
 
-###  Repository & Deliverables
+## Cloud selected: GCP
+#### Region:
 
-Create a repo named **`HHA504_mysql_vm_vs_managed`** with this structure:
+###  Database Specs: 
+
+
+
+
+### Scripts to copy 
+
+
+scripts/vm_demo.py
+```bash
+
+```
+
+scripts/managed_demo.py
+```bash
+
+```
+
+
+### Steps to reproduce 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+structure:
 
 ```
 HHA504_mysql_vm_vs_managed/
