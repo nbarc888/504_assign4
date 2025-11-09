@@ -59,35 +59,3 @@ to insert data into the new table create another query and insert following code
             SELECT * FROM patient_vitals;
 ``` 
 
-
-
-
-
-
-```bash
-# If using a notebook...use the ! , if not, remove the ! in front of the commands
-!sudo apt-get install python3-dev default-libmysqlclient-dev
-!pip install pymysq
-```
-```bash
-from sqlalchemy import create_engine 
-```
-```bash
-MYSQL_HOSTNAME = ‘INSERT_HERE'
-MYSQL_USER = ‘INSERT_HERE'
-MYSQL_PASSWORD = 'INSERT_HERE'
-MYSQL_DATABASE = ‘INSERT_HERE'
-```
-```bash
-connection_string = f'mysql+pymysql://{MYSQL_USER}:{MYSQL_PASSWORD}@{MYSQL_HOSTNAME}/{MYSQL_DATABASE}'
-db = create_engine(connection_string)
-```
-To connect mysql with python 
-```bash
-import pandas as pd
-```
-```bash
-query = """SELECT * FROM patient limit 10;""".format(MYSQL_DATABASE)
-events_df = pd.read_sql(query, con=db)
-events_df
-```
