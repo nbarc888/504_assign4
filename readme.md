@@ -5,6 +5,10 @@ Assignment link: https://github.com/hantswilliams/HHA-504-2025/blob/main/assignm
 
 You will provision two MySQL databases on the same cloud: (A) a VM you harden and configure yourself, and (B) the cloud’s managed MySQL offering. You will then connect to both using SQLAlchemy in Python, create a new database and table with pandas, insert data, and read it back. You will document steps, timing, and the differences in setup effort and operational friction.
 
+### Videos
+Self-Managed DB: https://youtu.be/LJhiQ5PFzwU 
+
+
 Managed service names by cloud
 - GCP: Cloud SQL for MySQL
 
