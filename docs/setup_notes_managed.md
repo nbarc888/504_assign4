@@ -48,9 +48,9 @@ to insert data into the new table create another query and insert following code
 ```bash
             INSERT INTO patient_vitals (patient_id, visit_date, bp_sys, bp_dia, hr)
             VALUES
-                (103, '2025-11-05', 110, 70, 75),
-                (101, '2025-11-08', 122, 81, 70),
-                (104, '2025-11-09', NULL, NULL, 88); -- NULL is used for missing data
+                (1, '2025-09-01', 118, 76, 72),
+                (2, '2025-09-02', 78, 35, 130),
+                (3, '2025-09-03', 121, 79, 95); 
 ```
 
 2. Testing the query table
