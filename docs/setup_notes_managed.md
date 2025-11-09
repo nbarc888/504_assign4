@@ -43,7 +43,8 @@ Connect MySQL with Python Framework
             PRIMARY KEY (patient_id, visit_date)
             );
 ```
-    to insert data into the new table create another query and insert following code: 
+to insert data into the new table create another query and insert following code: 
+
 ```bash
             INSERT INTO patient_vitals (patient_id, visit_date, bp_sys, bp_dia, hr)
             VALUES
@@ -51,12 +52,13 @@ Connect MySQL with Python Framework
                 (101, '2025-11-08', 122, 81, 70),
                 (104, '2025-11-09', NULL, NULL, 88); -- NULL is used for missing data
 ```
-        2. Testing the query table
-            create a new query 
+
+2. Testing the query table
+    create a new query to show whole table
 ```bash
             SELECT * FROM patient_vitals;
 ``` 
-            to show whole table
+
 
 
 
