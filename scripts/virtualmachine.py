@@ -28,6 +28,7 @@ print("[ENV] VM_DB_NAME:", VM_DB_NAME)
 
 # --- 1) Connect to server (no DB) and ensure database exists ---
 server_url = f"mysql+pymysql://{VM_DB_USER}:{VM_DB_PASS}@{VM_DB_HOST}:{VM_DB_PORT}/{VM_DB_NAME}?ssl=false"
+
 print("[STEP 1] Connecting to MySQL server (no DB):", server_url.replace(VM_DB_PASS, "*****"))
 t0 = time.time()
 

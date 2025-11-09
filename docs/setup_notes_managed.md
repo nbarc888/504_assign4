@@ -16,10 +16,46 @@ ETA for uploading database was 5 minutes
     Select Networking
     Select public IP with 0.0.0.0/0
     Add network 0.0.0.0/0
-    * you may see a pop up fro no authorized external connections to cloud SQL instance and a disclosure that you are opening instance to all IPv4 CLients
+    * you may see a pop up from no authorized external connections to cloud SQL instance and a disclosure that you are opening instance to all IPv4 CLients
 Connect MySQL with Python Framework 
+5. To create a new database via the menu go to databases, create database and enter fields: 
+    database name: egg
+    character set utf8mb4
+    default collection
+6. Open CloudSql Studio
+    a. This will prompt you to log into database and create a new user
+        Create a new user and password
+    b. Go back to CloudSql Studio and log in with new user
+        Go to Explorer tab on lefthand side and click on following items: 
+        1. Tables 
+            create a new query
+            insert following code from managed_service.py 
+            ```bash
+            CREATE TABLE patient_vitals (
+            patient_id INT NOT NULL,
+            visit_date DATE NOT NULL,
+            bp_sys INT,
+            bp_dia INT,
+            hr INT,
+            PRIMARY KEY (patient_id, visit_date)
+            );
+            ```
+            to insert data into the new table create another query and insert following code: 
+            ```bash
+            INSERT INTO patient_vitals (patient_id, visit_date, bp_sys, bp_dia, hr)
+            VALUES
+                (103, '2025-11-05', 110, 70, 75),
+                (101, '2025-11-08', 122, 81, 70),
+                (104, '2025-11-09', NULL, NULL, 88); -- NULL is used for missing data
+            ```
+        2. Testing the query table
+            create a new query 
+            ```bash
+            SELECT * FROM patient_vitals;
+            ``` 
+            to show whole output
 
-ETA for uploading database was 5 minutes
+
 
 
 
