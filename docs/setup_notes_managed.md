@@ -30,9 +30,9 @@ Connect MySQL with Python Framework
         Create a new user and password
     b. Go back to CloudSql Studio and log in with new user
         Go to Explorer tab on lefthand side and click on following items: 
-        1. Tables 
-            create a new query
-            insert following code from managed_service.py 
+1. Tables 
+    create a new query
+    insert following code from managed_service.py 
 ```bash
             CREATE TABLE patient_vitals (
             patient_id INT NOT NULL,
