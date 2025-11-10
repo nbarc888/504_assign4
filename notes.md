@@ -229,7 +229,7 @@ sudo mysql
 ```
 then it works 
 
-### Doing basic commands
+### Doing basic commands 1:30:00
 To show databases: 
 ```bash
 show databases;
@@ -251,6 +251,7 @@ step 1 -
 ```bash
 create user  'hants'@'34.23.53.13';  IDENTIFIED BY 'hants2025';
 # hants is the dba name you can swap it to a different db
+### % stands for the ip address but if you leave as % it means any ip address
 # above numbers are the ip address
 ```
 if you put in following command
@@ -309,7 +310,7 @@ to recheck priviledges
 ```bash 
 select * from mysql.user where user like 'dba' \G
 ```
-### you need to go into the configuration file and find the bind address see slide 101
+### you need to go into the configuration file and find the bind address see slide 101 or 1:46:00
 find on "bind-address" = numbers 
 
 what you now need to do is bind the external IP address to the mysql server , see slide 101 
@@ -360,4 +361,7 @@ this will then proompt a password and then when you hit enter it enables it
 2:08:00 shows observability 
 more managed route you can launch it at an additional cost 
 
-2:30:00 shows Azure route 
+2:30:00 shows Azure route
+
+3:17:00 shows how to use scripts !!! 
+
