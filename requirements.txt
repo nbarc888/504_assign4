@@ -1,0 +1,6 @@
+pandas
+SQLAlchemy
+pathlib
+os
+mysql-connector-python
+dotenv
