@@ -7,7 +7,7 @@ You will provision two MySQL databases on the same cloud: (A) a VM you harden an
 
 ### Videos
 Self-Managed DB: https://youtu.be/LJhiQ5PFzwU 
-
+VM: https://www.youtube.com/watch?v=g5sBPRp9DPY
 
 Managed service names by cloud
 - GCP: Cloud SQL for MySQL
