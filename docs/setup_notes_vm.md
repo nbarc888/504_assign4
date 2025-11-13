@@ -1,3 +1,5 @@
+# How to Create a VM managed Database
+
 #### Region: US-East1 (SC) 
 
 - insert username, password and confirm password
@@ -137,4 +139,7 @@ For changes to take place inorder to restart mysql (if command doesnt work exit 
 sudo systemctl restart mysql
 ```
 
+# Python code testing 
 
+See virtualmachine.py in scripts
+Run code section by section inorder to run properly! 
