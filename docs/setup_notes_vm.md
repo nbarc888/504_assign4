@@ -23,7 +23,11 @@ enable tcp 3306
 
 Name of VM instance: salmon 
 Internal IP: 10.150.0.4
-External IP: 34.48.227.25
+old External IP: 34.48.227.25
+
+New External IP: 35.231.55.63
+
+
 
 ## SHH commands and directions
 to update ubuntu OS server
@@ -132,3 +136,5 @@ For changes to take place inorder to restart mysql (if command doesnt work exit 
 ```bash
 sudo systemctl restart mysql
 ```
+
+

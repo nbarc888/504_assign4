@@ -1,3 +1,4 @@
+# Note: This file is the original version of the VM script before edits.
 # VENV ACTIVATE INSTRUCTIONS:
 # if not already done, create a venv:
 #   python -m venv venv
@@ -33,28 +34,22 @@ print("[ENV] VM_DB_PORT:", VM_DB_PORT)
 print("[ENV] VM_DB_USER:", VM_DB_USER)
 print("[ENV] VM_DB_NAME:", VM_DB_NAME)
 
-print(f"Connecting to: {VM_DB_HOST}")
-print(f"Database: {VM_DB_NAME}")
-
-t0 = time.time()
-
 # --- 1) Connect to server (no DB) and ensure database exists ---
 server_url = f"mysql+pymysql://{VM_DB_USER}:{VM_DB_PASS}@{VM_DB_HOST}:{VM_DB_PORT}/{VM_DB_NAME}?ssl=false"
+
 print("[STEP 1] Connecting to MySQL server (no DB):", server_url.replace(VM_DB_PASS, "*****"))
+t0 = time.time()
 
-
-# Original code: removed due to consistent errors when running in terminal
-#------------
-# engine_server = create_engine(server_url, pool_pre_ping=True)
-# with engine_server.connect() as conn:
-#    conn.execute(text(f"CREATE DATABASE IF NOT EXISTS `{VM_DB_NAME}`"))
-#    conn.commit()
-# print(f"[OK] Ensured database `{VM_DB_NAME}` exists.")
+engine_server = create_engine(server_url, pool_pre_ping=True)
+with engine_server.connect() as conn:
+    conn.execute(text(f"CREATE DATABASE IF NOT EXISTS `{VM_DB_NAME}`"))
+    conn.commit()
+print(f"[OK] Ensured database `{VM_DB_NAME}` exists.")
 
 # --- 2) Connect to the target database ---
-#### removed ssl_connectionsection for VM setup
-db_url = f"mysql+pymysql://{VM_DB_USER}:{VM_DB_PASS}@{VM_DB_HOST}:{VM_DB_PORT}/{VM_DB_NAME}"
-engine = create_engine(db_url, pool_pre_ping=True)
+#### ignore ssl_connection for VM setup
+db_url = f"mysql+pymysql://{VM_DB_USER}:{VM_DB_PASS}@{VM_DB_HOST}:{VM_DB_PORT}/{VM_DB_NAME}?ssl=false"
+engine = create_engine(db_url)
 
 # --- 3) Create a DataFrame and write to a table ---
 table_name = "ED_vitals"
@@ -68,23 +63,13 @@ df = pd.DataFrame(
     ]
 )
 
-df.to_sql(table_name, con=engine, if_exists="replace", index=False)
-print(f" Wrote {len(df)} rows to '{table_name}'\n")
-
+df.to_sql(table_name, con=engine, if_exists="replace", index=False, connect_args={"ssl": {"ssl_disabled": True}})
 
 # --- 4) Read back a quick check ---
-print("Reading ED_vitals ...")
-table_name = "ED_vitals"
-df = pd.read_sql_table(table_name, con=engine)
-print(f"\n Read {len(df)} rows from '{table_name}'\n")
-
-print(df)
-
-#original code: removed due to consistent errors when running in terminal
-# ------
-# with engine.connect() as conn:
-#    count_df = pd.read_sql(f"SELECT COUNT(*) AS n_rows FROM `{table_name}`", con=conn)
-# print(count_df)
+print("[STEP 4] Reading back row count ...")
+with engine.connect() as conn:
+    count_df = pd.read_sql(f"SELECT COUNT(*) AS n_rows FROM `{table_name}`", con=conn)
+print(count_df)
 
 elapsed = time.time() - t0
 print(f"[DONE] VM path completed in {elapsed:.1f}s at {datetime.utcnow().isoformat()}Z")
