@@ -41,7 +41,7 @@ to install mysql
 sudo apt install mysql-server 
 ```
 ```bash
-sup apt install mysql-client
+sudo apt install mysql-client
 ```
 
 to log in 
@@ -114,6 +114,24 @@ use sushi;
 ```bash 
 show tables; ### should show and empty table
 ```
+
+to enter a non-empty database 
+```bash
+use vitals
+```
+
+to show list of tables
+```bash
+show tables; 
+```
+
+to show table contents
+```bash
+SELECT * FROM ED_vitals;
+```
+
+
+### To configure bind address
 
 at this point you can either choose to exit mysql or relaunch SHH 
 
