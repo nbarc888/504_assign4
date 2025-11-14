@@ -1,6 +1,6 @@
 GCP config options 
 
-# HOW TO TO CREATE A SELF-MANAGED INSTANCE
+# HOW TO TO CREATE A MANAGED INSTANCE
 1. Go to console.cloud.google.com/sql/instances/
 2. Click create instance
 3. Choose MySQL
