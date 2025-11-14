@@ -3,10 +3,9 @@ goal is to use one cloud source. Goal: use google cloud
 
 Assignment link: https://github.com/hantswilliams/HHA-504-2025/blob/main/assignment_4/database_deployment.md
 
-You will provision two MySQL databases on the same cloud: (A) a VM you harden and configure yourself, and (B) the cloud’s managed MySQL offering. You will then connect to both using SQLAlchemy in Python, create a new database and table with pandas, insert data, and read it back. You will document steps, timing, and the differences in setup effort and operational friction.
 
 ### Videos
-Self-Managed DB: https://youtu.be/LJhiQ5PFzwU 
+Managed DB: https://youtu.be/LJhiQ5PFzwU 
 VM: https://www.youtube.com/watch?v=g5sBPRp9DPY
 
 Managed service names by cloud
@@ -31,99 +30,84 @@ source: 0.0.0.0./0
 enable tcp 3306
 
 
-###  Database Specs: 
+-----
 
-
-
-
-### Scripts to copy 
-
-
-scripts/vm_demo.py
+##### virtualmachine.py
 ```bash
-
+scripts/virtualmachine.py
 ```
 
-scripts/managed_demo.py
+##### managed_service.py
 ```bash
-
+scripts/managed_service.py
 ```
 
 
-### Steps to reproduce 
+### Steps used for connection in cloud shell 
 
-Update ubuntu
+Update ubuntu 
 ```bash
 sudo apt-get update
 ```
+
+To install nano
 ```Bash 
 sudo apt install nano
 ```
+
 To install mysql
 ```bash
 sudo apt install mysql-server mysql-client #-y 
 # (if you add this arguement it autosays yes which is optional)
 ```
-To log in - this 
+
+To connect to sql database 
 ```bash
 sudo mysql
 ```
-To connect to another database
+
+To connect to another database seen in managed database
 ```bash
-mysql -u hants -h 34.23.52.32 -p
+mysql -u #username -h #ipaddressnumbers -p
 ```
+
 note: u stands for user, h stands for host
 ##### Exit out of SHH then back in SHH
 ```bash
 sudo mysql
 ```
-then it works 
-
-Commands for Query: 
-```bash
-
-```
-```bash
-
-```
-```bash
-SHOW DATABASES;
-```
 
 
 
 
+### Screenshot and summaries 
+please see code for quick descriptions of each screenshot
 
 
+##### Managed Screenshots
+
+![Screenshot of two instances created, both had the same specs however i created two, one for the purpose of deletion](screenshots/managed/instance1.PNG)  
+![Screenshot of the same two instances but both are now online](screenshots/managed/instance2.PNG)
+![Screenshot of showing how and where to delete the instance](screenshots/managed/instancedelete.PNG)
+![Screenshot of omelet instance networking](screenshots/managed/sm2.JPG)
+![Screenshot of username and password for sql database. Google managed has the ability to create usernames without having to enter the cloudshell terminal](screenshots/managed/usercreate.PNG)
+![Screenshot of list of databases on Managed cloud sql menu](screenshots/managed/newdatabaseviamenu.PNG)
+![Google cloud has the ability to make queries directly though its menu instead of cloudshell](screenshots/managed/querytableverify.PNG)
+![Cloudshell connection](screenshots/managed/cloudshellconnect.PNG)
+![Cloudshell databases shown](screenshots/managed/cloudshell.PNG)
 
 
+##### VM Screenshots 
 
+![Vm instance created for this assignment](screenshots/vm/vm1.PNG)
+![Databases within VM instance](screenshots/vm/vm2.PNG)
+![Screenshot of nano package installation along with sudo mysql command being used](screenshots/vm/mysqlnanoinstall.PNG)
+![Screenshot of nano and change of bind-address and mysqlx-bind-address](screenshots/vm/nanobind.PNG)
+![Creation of user salmon and granting permissions for user salmon. please note \G is used to organize the output](screenshots/vm/usercreate.PNG)
+![User permissions of user salmon showing that user has access and permissions similar to admin permissions](screenshots/vm/userperm.PNG)
+![Screenshot showing connection using salmon and showing databases present within sql instance](screenshots/vm/databasesushi.PNG)
+![Screenshot showing both commands and output which includes table of vitals within vitals database](screenshots/vm/dbconfirmtable.PNG)
+![Connection using cloudshell terminal rather than shh](screenshots/vm/successfulconnectioncloudshell.PNG)
+![Using cloudshell to show databases within instance](screenshots/vm/cloudshelldatabase.PNG)
+![Screenshot of VM instance  obervability page](screenshots/vm/observability.PNG)
 
-
-
-
-
-
-
-
-
-structure:
-
-```
-HHA504_mysql_vm_vs_managed/
-├─ README.md
-├─ .gitignore                  # Make sure to ignore your .env 
-├─ .env.example                # Do NOT commit real secrets
-├─ scripts/
-│   ├─ vm_demo.py              # SQLAlchemy+pandas against VM MySQL
-│   └─ managed_demo.py         # SQLAlchemy+pandas against managed MySQL
-├─ sql/
-│   └─ init.sql                # Optional: user/db bootstrap you ran on VM
-├─ screenshots/
-│   ├─ vm/                     # VM portal, firewall, daemon status, CLI, etc.
-│   └─ managed/                # Managed service creation, connection details
-└─ docs/
-    ├─ setup_notes_vm.md
-    ├─ setup_notes_managed.md
-    └─ comparison.md           # timing & difficulty comparison
-```
