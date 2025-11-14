@@ -38,8 +38,24 @@ print("[STEP 1] Connecting to Managed MySQL (no DB):", server_url.replace(MAN_DB
 #rint(f"[OK] Ensured database `{MAN_DB_NAME}` exists on managed instance.")
 
 # --- 2) Connect to the target database ---
-db_url = f"mysql+pymysql://{MAN_DB_USER}:{MAN_DB_PASS}@{MAN_DB_HOST}:{MAN_DB_PORT}/{MAN_DB_NAME}"
-engine = create_engine(db_url, pool_pre_ping=True)
+db_url = (
+    f"mysql+pymysql://{MAN_DB_USER}:{MAN_DB_PASS}@{MAN_DB_HOST}:{MAN_DB_PORT}/{MAN_DB_NAME}"
+    f"?ssl_ca=&ssl_cert=&ssl_key=&ssl_check_hostname=false&ssl_verify_cert=false"
+)
+print("[STEP 1] Connecting to Cloud SQL MySQL:", db_url.replace(MAN_DB_PASS, "*****"))
+
+
+engine = create_engine(
+    db_url,
+    pool_pre_ping=True,  # Verify connections before using
+    pool_recycle=3600,   # Recycle connections after 1 hour
+    pool_size=5,         # Connection pool size
+    max_overflow=2,      # Additional connections if pool is full
+    connect_args={
+        'connect_timeout': 10,  # Connection timeout in seconds
+    }
+)
+
 
 # --- 3) Create a DataFrame and write to a table ---
 table_name = "page"
@@ -57,8 +73,15 @@ df = pd.DataFrame(
 #    df.to_sql(table_name, con=conn, if_exists="replace", index=False)
 #print("[OK] Wrote DataFrame to table.")
 
-df.to_sql(table_name, con=engine, if_exists="replace", index=False)
-print(f" Wrote {len(df)} rows to '{table_name}'\n")
+print(f"[STEP 2] Writing DataFrame to table: {table_name}")
+try:
+    with engine.begin() as conn:
+        df.to_sql(table_name, con=conn, if_exists="replace", index=False)
+    print(f"[OK] Wrote {len(df)} rows to '{table_name}'\n")
+except Exception as e:
+    print(f"[ERROR] Failed to write to table: {e}")
+    raise
+
 
 # --- 4) Read back a quick check ---
 #print("[STEP 4] Reading back row count ...")
@@ -66,10 +89,10 @@ print(f" Wrote {len(df)} rows to '{table_name}'\n")
 #    count_df = pd.read_sql(f"SELECT COUNT(*) AS n_rows FROM `{table_name}`", con=conn)
 #print(count_df)
 
-print("Reading page ...")
-table_name = "page"
-df = pd.read_sql_table(table_name, con=engine)
-print(f"\n Read {len(df)} rows from '{table_name}'\n")
+print(f"[STEP 3] Reading from '{table_name}' ...")
+df_read = pd.read_sql_table(table_name, con=engine)
+print(f"[OK] Read {len(df_read)} rows from '{table_name}'")
+print(df_read.head())
 
 elapsed = time.time() - t0
-print(f"[DONE] Managed path completed in {elapsed:.1f}s at {datetime.utcnow().isoformat()}Z")
+print(f"\n[DONE] Cloud SQL operation completed in {elapsed:.1f}s at {datetime.utcnow().isoformat()}Z")
