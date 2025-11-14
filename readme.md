@@ -1,11 +1,11 @@
 
-goal is to use one cloud source. Goal: use google cloud
-
 Assignment link: https://github.com/hantswilliams/HHA-504-2025/blob/main/assignment_4/database_deployment.md
 
 
 ### Videos
 Managed DB: https://youtu.be/LJhiQ5PFzwU 
+
+
 VM: https://www.youtube.com/watch?v=g5sBPRp9DPY
 
 Managed service names by cloud
