@@ -78,15 +78,22 @@ then use the new database
 use cookbook;
 ```
 
-to insert new table into the cookbook 
-```bash
-create table page1
-```
-
 checking database to confirm creation
 ```bash
 show databases
 ```
+to select database
+```bash
+use cookbook
+```
 
+show tables
+```bash 
+show tables;
+```
 
+To show table contents
+```bash
+SELECT * FROM page;
+```
 
