@@ -3,7 +3,8 @@ Assignment link: https://github.com/hantswilliams/HHA-504-2025/blob/main/assignm
 
 
 ### Videos
-Managed DB: https://youtu.be/LJhiQ5PFzwU 
+Managed DB:https://www.youtube.com/watch?v=ZaZ4a6iWtDY
+Alternate way to upload and make queries for managed db: https://youtu.be/LJhiQ5PFzwU 
 
 
 VM: https://www.youtube.com/watch?v=g5sBPRp9DPY
