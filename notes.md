@@ -363,5 +363,11 @@ more managed route you can launch it at an additional cost
 
 2:30:00 shows Azure route
 
+
+
+3:00:00 GCP Managed set up 
+
+
+
 3:17:00 shows how to use scripts !!! 
 

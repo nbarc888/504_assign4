@@ -6,8 +6,8 @@ VM_DB_PASS=salmon123
 VM_DB_NAME=vitals
 
 # Managed MySQL
-MAN_DB_HOST=your-managed-endpoint
+MAN_DB_HOST=34.85.160.89
 MAN_DB_PORT=3306
-MAN_DB_USER=class_user
-MAN_DB_PASS=change_me
-MAN_DB_NAME=class_db_netid
+MAN_DB_USER=chef
+MAN_DB_PASS=Cook!ng123
+MAN_DB_NAME=cookbook

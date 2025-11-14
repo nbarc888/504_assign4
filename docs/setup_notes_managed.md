@@ -1,5 +1,3 @@
-GCP config options 
-
 # HOW TO TO CREATE A MANAGED INSTANCE
 1. Go to console.cloud.google.com/sql/instances/
 2. Click create instance
@@ -58,4 +56,37 @@ to insert data into the new table create another query and insert following code
 ```bash
             SELECT * FROM patient_vitals;
 ``` 
+
+-------------
+```bash
+mysql -u chef -h 34.85.160.89 -p
+```
+
+then proceed to enter password
+
+```bash
+show databases;
+```
+
+to create database
+```bash
+create database cookbook;
+```
+
+then use the new database
+```bash
+use cookbook;
+```
+
+to insert new table into the cookbook 
+```bash
+create table page1
+```
+
+checking database to confirm creation
+```bash
+show databases
+```
+
+
 
